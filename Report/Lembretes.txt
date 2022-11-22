@@ -1,0 +1,9 @@
+﻿- Auth
+
+	SignUp			(OK)
+	SignIn			(OK)
+	ForgotPassword
+	Activate
+	Logout
+
+- 
