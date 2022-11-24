@@ -15,6 +15,7 @@ $(document).ready(function () {
         if ($('.main-map').hasClass('d-none'))
         {
             $('.main-map').removeClass('d-none');
+            $('.map-controls').removeClass('d-none');
         }
         else {
             $('.main-map').addClass('d-none');

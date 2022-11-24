@@ -4,25 +4,6 @@
 function initMap() {
     navigator.geolocation.getCurrentPosition(position => {
         const { latitude, longitude } = position.coords;
-
-        //console.log('latitude', position.coords.latitude);
-        //console.log('longitude', position.coords.longitude);
-
-        //// The location of Uluru
-        //const uluru = { lat: latitude, lng: longitude };
-
-        //// The map, centered at Uluru
-        //const map = new google.maps.Map(document.getElementById("map"), {
-        //    zoom: 12,
-        //    center: uluru,
-        //});
-
-        //// The marker, positioned at Uluru
-        //const marker = new google.maps.Marker({
-        //    position: uluru,
-        //    map: map,
-        //});
-
         var myLatlng = new google.maps.LatLng(latitude, longitude);
         var mapOptions = {
             zoom: 12,
@@ -38,10 +19,24 @@ function initMap() {
             title: "Alert!"
         });
 
+        var opt = $("#occurrence option:selected").val();
+        var desc = $('#occurrence-description').val();
+
+        console.log($("#occurrence option:selected").val());
+        console.log($('#occurrence-description').val());
+
         $('#btnPosition').on('click', function () {
-            console.log('marker', marker.getPosition());
-            console.log('latitude', marker.getPosition().lat());
-            console.log('longitude', marker.getPosition().lng());
+            let latitude = marker.getPosition().lat();
+            let longitude = marker.getPosition().lng();
+            let option = opt;
+            let description = desc;
+
+
+            Swal.fire({
+                title: "<i>Os dados informados foram:</i>",
+                html: "Option: " + opt + "<br>Description: " + desc + "<br>Latitude: " + latitude + "<br>Longitude: " + longitude,
+                confirmButtonText: "V <u>redu</u>",
+            });
         });
     });
 }
