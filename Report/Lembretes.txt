@@ -1,4 +1,7 @@
-﻿- Auth
+﻿
+BACKEND
+
+- Auth
 
 	SignUp			(OK)
 	SignIn			(OK)
@@ -6,4 +9,9 @@
 	Activate
 	Logout
 
-- 
+-
+
+
+FRONTEND
+
+Ajustar o botão principal para sumir com o contexto e habilitar o mapa

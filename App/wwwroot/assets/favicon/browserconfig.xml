@@ -1,0 +1,8 @@
+﻿<browserconfig>
+	<msapplication>
+		<tile>
+			<square150x150logo src="assets/ico/mstile-150x150.png"/>
+			<TileColor>#151515</TileColor>
+		</tile>
+	</msapplication>
+</browserconfig>
