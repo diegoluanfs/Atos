@@ -37,6 +37,24 @@ function initMap() {
                 html: "Option: " + opt + "<br>Description: " + desc + "<br>Latitude: " + latitude + "<br>Longitude: " + longitude,
                 confirmButtonText: "V <u>redu</u>",
             });
+
+            $.ajax({
+                url: "https://localhost:44335/helpbuy/getbystatus",
+                type: 'post',
+                data: {
+                    latitude: "Maria Fernanda",
+                    longitude: '3500'
+                },
+                beforeSend: function () {
+                    $("#resultado").html("ENVIANDO...");
+                }
+            }).done(function (msg) {
+                    $("#resultado").html(msg);
+                })
+                .fail(function (jqXHR, textStatus, msg) {
+                    alert(msg);
+                });
+
         });
     });
 }
