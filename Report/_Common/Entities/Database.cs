@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Reflection;
 
-namespace report.Common.Entities
+namespace Report.Common.Entities
 {
 
     /// <summary>
@@ -105,7 +105,7 @@ namespace report.Common.Entities
                     if (!item.AcceptZero)
                     {
 
-                        parameter.Value = (decimal)item.ParameterValue > 0 ? item.ParameterValue : null;
+                        parameter.Value = (decimal)item.ParameterValue;// > 0 ? item.ParameterValue : null;
                     }
                     else
                     {

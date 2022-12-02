@@ -1,5 +1,5 @@
 ﻿
-namespace report.Users.Entities
+namespace Report.Users.Entities
 {
     public class UpdateAvatarReq
     {

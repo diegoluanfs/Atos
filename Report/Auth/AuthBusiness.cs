@@ -1,15 +1,15 @@
-﻿using report._Common;
-using report._Common.Entities;
-using report.Auth.Entities;
-using report.Common.Entities;
-using report.Users;
+﻿using Report._Common;
+using Report._Common.Entities;
+using Report.Auth.Entities;
+using Report.Common.Entities;
+using Report.Users;
 using Microsoft.AspNetCore.Http.Features;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Transactions;
 
-namespace report.Auth
+namespace Report.Auth
 {
     public class AuthBusiness
     {

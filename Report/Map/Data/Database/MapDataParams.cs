@@ -1,4 +1,4 @@
-﻿namespace report.Auth.Databases
+﻿namespace Report.Auth.Databases
 {
     public struct MapDataParams
     {

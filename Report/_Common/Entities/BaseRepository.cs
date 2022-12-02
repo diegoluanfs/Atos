@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-namespace report.Common.Entities
+namespace Report.Common.Entities
 {
     public class BaseRepository
     {

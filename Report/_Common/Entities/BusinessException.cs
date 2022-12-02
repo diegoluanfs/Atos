@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace report.Common.Entities
+namespace Report.Common.Entities
 {
     public class BusinessException : Exception
     {

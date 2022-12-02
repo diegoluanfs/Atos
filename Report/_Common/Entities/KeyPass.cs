@@ -1,4 +1,4 @@
-﻿namespace report._Common.Entities
+﻿namespace Report._Common.Entities
 {
     public class KeyPass
     {

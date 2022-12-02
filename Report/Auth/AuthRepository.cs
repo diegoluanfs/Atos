@@ -1,9 +1,9 @@
-﻿using report.Auth.Databases;
-using report.Auth.Entities;
-using report.Common.Entities;
+﻿using Report.Auth.Databases;
+using Report.Auth.Entities;
+using Report.Common.Entities;
 using System.Data;
 
-namespace report.Auth
+namespace Report.Auth
 {
     public class AuthRepository : BaseRepository
     {

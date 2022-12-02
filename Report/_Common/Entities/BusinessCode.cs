@@ -1,7 +1,7 @@
-﻿using report.Common.Entities;
+﻿using Report.Common.Entities;
 using System.ComponentModel;
 
-namespace report.Common.Entities
+namespace Report.Common.Entities
 {
     public enum BusinessCode
     {

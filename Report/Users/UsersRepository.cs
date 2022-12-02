@@ -1,9 +1,9 @@
-﻿using report.Common.Entities;
-using report.Users.Databases;
-using report.Users.Entities;
+﻿using Report.Common.Entities;
+using Report.Users.Databases;
+using Report.Users.Entities;
 using System.Data;
 
-namespace report.Users
+namespace Report.Users
 {
     public class UsersRepository : BaseRepository
     {

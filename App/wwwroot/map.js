@@ -22,49 +22,65 @@ function initMap() {
         var opt = $("#occurrence option:selected").val();
         var desc = $('#occurrence-description').val();
 
+        var cont = 0;
         $('.btnReport').on('click', function () {
-            var _latitude = marker.getPosition().lat();
-            var _longitude = marker.getPosition().lng();
-            let option = opt;
-            let description = desc;
+            cont++;
+            if (cont > 1) {
+                var _latitude = marker.getPosition().lat();
+                var _longitude = marker.getPosition().lng();
+                let option = opt;
+                let description = desc;
 
-            console.log(JSON.stringify({
-                latitude: _latitude,
-                longitude: _longitude
-            }));
+                var occurrence = JSON.stringify({
+                    latitude: _latitude + "",
+                    longitude: _longitude + "",
+                    occurrenceType: $('#occurrence').val(),
+                    occurrenceDescription: $('#occurrence-description').val()
+                });
 
-            $.ajax({
-                url: 'https://localhost:7280/Map/create',
-                type: 'POST',
-                headers: { 'APIKey': localStorage.getItem('l'), 'APIVersion': '1.0' },
-                contentType: 'application/json',
-                async: false,
-                processData: false,
-                crossDomain: true,
-                data: function (d) {
-                    return JSON.stringify({
-                        latitude: _latitude,
-                        longitude: _longitude
-                    });
-                },
-                success: function (data) {
-                    //console.log(data);
-                },
-                error: function (ex) {
-                    //console.log(ex);
-                }
-            });
+                console.log(occurrence);
 
-
-            //Swal.fire({
-            //    title: "<i>Os dados informados foram:</i>",
-            //    html: "Option: " + opt + "<br>Description: " + desc + "<br>Latitude: " + latitude + "<br>Longitude: " + longitude,
-            //    confirmButtonText: "V <u>redu</u>",
-            //});
-
+                $.ajax({
+                    url: 'https://localhost:7280/Map/create',
+                    type: 'POST',
+                    headers: { 'APIKey': localStorage.getItem('l'), 'APIVersion': '1.0' },
+                    contentType: 'application/json',
+                    async: false,
+                    processData: false,
+                    crossDomain: true,
+                    data: occurrence,
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (ex) {
+                        console.log(ex);
+                    }
+                });
+            }
         });
     });
 }
+
+
+$.ajax({
+    url: 'https://localhost:7280/Utility/getoccurrences',
+    type: 'GET',
+    headers: { 'APIKey': '', 'APIVersion': '1.0' },
+    contentType: 'application/json',
+    async: false,
+    processData: false,
+    crossDomain: true,
+    data: {},
+    success: function (resp) {
+        var selectbox = $('#occurrence');
+        $(resp.data).each(function (index, element) {
+            selectbox.append('<option value="' + element.id + '">' + element.name + '</option>');
+        });
+    },
+    error: function (ex) {
+        //console.log(ex);
+    }
+});
 
 window.initMap = initMap;
 

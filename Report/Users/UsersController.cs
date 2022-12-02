@@ -1,10 +1,10 @@
-﻿using report._Common;
-using report.Common.Entities;
-using report.Users.Entities;
+﻿using Report._Common;
+using Report.Common.Entities;
+using Report.Users.Entities;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 
-namespace report.Users
+namespace Report.Users
 {
     [ApiController]
     public class UsersController : Controller

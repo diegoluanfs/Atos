@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace report.Users.Entities
+namespace Report.Users.Entities
 {
     /// <summary>
     /// 

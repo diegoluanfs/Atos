@@ -1,9 +1,9 @@
-﻿using report.Common.Entities;
-using report.Users.Entities;
+﻿using Report.Common.Entities;
+using Report.Users.Entities;
 using System.Text.RegularExpressions;
 using System.Transactions;
 
-namespace report.Users
+namespace Report.Users
 {
     public class UsersBusiness
     {

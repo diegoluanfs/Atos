@@ -1,4 +1,4 @@
-﻿namespace report.Auth.Entities
+﻿namespace Report.Auth.Entities
 {
     public class SignInAuthResp
     {

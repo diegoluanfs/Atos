@@ -1,4 +1,4 @@
-﻿namespace report.Users.Databases
+﻿namespace Report.Users.Databases
 {
     public struct UsersDataColumns
     {

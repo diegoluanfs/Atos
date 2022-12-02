@@ -1,10 +1,10 @@
-﻿using report.Common.Entities;
-using report.Auth.Entities;
+﻿using Report.Common.Entities;
+using Report.Auth.Entities;
 using Microsoft.AspNetCore.Mvc;
-using report._Common;
+using Report._Common;
 using Microsoft.AspNetCore.Http.Features;
 
-namespace report.Auth
+namespace Report.Auth
 {
     public class AuthController : Controller
     {

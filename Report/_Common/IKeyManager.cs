@@ -1,6 +1,6 @@
-﻿using report._Common.Entities;
+﻿using Report._Common.Entities;
 
-namespace report._Common
+namespace Report._Common
 {
     public interface IKeyManager
     {

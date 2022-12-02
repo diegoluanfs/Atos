@@ -1,11 +1,11 @@
-﻿using report.Common.Entities;
+﻿using Report.Common.Entities;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace report._Common
+namespace Report._Common
 {
     public static class Helper
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace report.Common.Entities
+namespace Report.Common.Entities
 {
     public class SQLParameterCustom
     {

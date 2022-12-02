@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace report.Common.Entities
+namespace Report.Common.Entities
 {
     [AttributeUsage(AttributeTargets.Field,
                        AllowMultiple = true)  // multiuse attribute  

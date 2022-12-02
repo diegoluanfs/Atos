@@ -1,4 +1,4 @@
-﻿namespace report.Common.Entities
+﻿namespace Report.Common.Entities
 {
     public struct DataColumns
     {

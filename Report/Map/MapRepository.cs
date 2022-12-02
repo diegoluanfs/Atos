@@ -1,9 +1,9 @@
-﻿using report.Auth.Databases;
-using report.Common.Entities;
+﻿using Report.Auth.Databases;
+using Report.Common.Entities;
 using Report.Map.Entities;
 using System.Data;
 
-namespace report.Map
+namespace Report.Map
 {
     public class MapRepository : BaseRepository
     {
@@ -19,7 +19,7 @@ namespace report.Map
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.UPDATED, mapCreate.Updated));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.CREATED_BY, mapCreate.CreatedBy, true));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.UPDATED_BY, mapCreate.UpdatedBy, true));
-                CustomParams.Add(new SQLParameterCustom(MapDataParams.GEOLOCATION, mapCreate.Geolocation, true));
+                //CustomParams.Add(new SQLParameterCustom(MapDataParams.GEOLOCATION, mapCreate.Geolocation, true));
 
                 Database dt = new Database();
                 Params = dt.CreateParameter(CustomParams);
@@ -56,8 +56,8 @@ namespace report.Map
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         Occurrence occurrence = new Occurrence();
-                        occurrence.Latitude = DbParse<decimal>(row, MapDataColumns.LATITUDE);
-                        occurrence.Longitude = DbParse<decimal>(row, MapDataColumns.LONGITUDE);
+                        occurrence.Latitude = DbParse<decimal>(row, MapDataColumns.LATITUDE).ToString();
+                        occurrence.Longitude = DbParse<decimal>(row, MapDataColumns.LONGITUDE).ToString();
                         occurrences.Add(occurrence);
                     }
                 }

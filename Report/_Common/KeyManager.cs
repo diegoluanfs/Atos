@@ -1,13 +1,13 @@
-﻿using report._Common.Entities;
-using report.Auth;
-using report.Auth.Databases;
-using report.Auth.Entities;
-using report.Common.Entities;
+﻿using Report._Common.Entities;
+using Report.Auth;
+using Report.Auth.Databases;
+using Report.Auth.Entities;
+using Report.Common.Entities;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace report._Common
+namespace Report._Common
 {
     public class KeyManager : IKeyManager
     {

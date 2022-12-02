@@ -1,9 +1,9 @@
-﻿using report._Common;
-using report.Common.Entities;
+﻿using Report._Common;
+using Report.Common.Entities;
 using System.Transactions;
 using Report.Map.Entities;
 
-namespace report.Map
+namespace Report.Map
 {
     public class MapBusiness
     {
@@ -39,8 +39,13 @@ namespace report.Map
                 #endregion
 
                 MapCreate mapCreate = new MapCreate();
+                mapCreate.Latitude = decimal.Parse(occurrence.Latitude);
+                mapCreate.Longitude = decimal.Parse(occurrence.Longitude);
                 mapCreate.Created = DateTime.Now;
                 mapCreate.Updated = DateTime.Now;
+
+                mapCreate.CreatedBy = 1;
+                mapCreate.UpdatedBy = 1;
 
                 bool resp = false;
 
