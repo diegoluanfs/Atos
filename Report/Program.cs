@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.OpenApi.Models;
 using report._Common;
 using Swashbuckle.AspNetCore.Filters;
 using System.Globalization;
 
+string MyPolicy = "MyPolicy";
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
+IWebHostEnvironment environment = builder.Environment;
 
 Helper.Configuration = configuration;
 
@@ -13,9 +16,32 @@ CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyPolicy,
+    cors =>
+    {
+        cors.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
+builder.Services.Configure<JsonOptions>(options =>
+{
+    //options.SerializerOptions.Converters.Add(new DecimalCustom());
+    //options.SerializerOptions.Converters.Add(new Int32Custom());
+    //options.SerializerOptions.Converters.Add(new DateTimeCustom());
+
+
+
+
+    options.SerializerOptions.PropertyNameCaseInsensitive = false;
+    options.SerializerOptions.PropertyNamingPolicy = null;
+    options.SerializerOptions.WriteIndented = true;
+});
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<IKeyManager, KeyManager>();
+
+builder.Services.AddSingleton<IConfiguration>(configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -29,7 +55,6 @@ builder.Services.AddSwaggerGen(c =>
     c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
     //c.EnableAnnotations();
     // c.DocumentFilter<DocumentFilter>();
-    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -98,6 +123,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(MyPolicy);
 
 app.MapControllers();
 

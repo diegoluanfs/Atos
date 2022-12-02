@@ -1,7 +1,8 @@
 ﻿using report.Common.Entities;
-using Microsoft.AspNetCore.Mvc;
 using report._Common;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc;
+using Report.Map.Entities;
 
 namespace report.Map
 {
@@ -18,15 +19,15 @@ namespace report.Map
             _keyManager = keyManager;
         }
 
-        [Route("map")]
+        [Route("map/create")]
         [HttpPost]
         //[EnableCors("MyPolicy")]
-        public async Task<IActionResult> Create(string latitude, string longitude)
+        public async Task<IActionResult> Create([FromBody] Occurrence occurrence)
         {
             try
             {
                 MapBusiness userBusiness = new MapBusiness();
-                var resp = await userBusiness.Create(latitude, longitude);
+                var resp = await userBusiness.Create(occurrence);
 
                 return StatusCode(201, new Return() { Data = resp });
             }

@@ -16,6 +16,10 @@ namespace report.Map
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.LATITUDE, mapCreate.Latitude));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.LONGITUDE, mapCreate.Longitude));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.CREATED, mapCreate.Created));
+                CustomParams.Add(new SQLParameterCustom(MapDataParams.UPDATED, mapCreate.Updated));
+                CustomParams.Add(new SQLParameterCustom(MapDataParams.CREATED_BY, mapCreate.CreatedBy, true));
+                CustomParams.Add(new SQLParameterCustom(MapDataParams.UPDATED_BY, mapCreate.UpdatedBy, true));
+                CustomParams.Add(new SQLParameterCustom(MapDataParams.GEOLOCATION, mapCreate.Geolocation, true));
 
                 Database dt = new Database();
                 Params = dt.CreateParameter(CustomParams);
@@ -52,8 +56,8 @@ namespace report.Map
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         Occurrence occurrence = new Occurrence();
-                        occurrence.Latitude = DbParse<string>(row, MapDataColumns.LATITUDE);
-                        occurrence.Longitude = DbParse<string>(row, MapDataColumns.LONGITUDE);
+                        occurrence.Latitude = DbParse<decimal>(row, MapDataColumns.LATITUDE);
+                        occurrence.Longitude = DbParse<decimal>(row, MapDataColumns.LONGITUDE);
                         occurrences.Add(occurrence);
                     }
                 }

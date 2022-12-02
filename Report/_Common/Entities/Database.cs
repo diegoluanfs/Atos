@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace report.Common.Entities
 {
+
     /// <summary>
     /// 
     /// </summary>
@@ -141,6 +142,11 @@ namespace report.Common.Entities
 
             return paramList;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static IConfiguration Configuration;
 
         /// <summary>
         /// 

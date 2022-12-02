@@ -22,38 +22,45 @@ function initMap() {
         var opt = $("#occurrence option:selected").val();
         var desc = $('#occurrence-description').val();
 
-        console.log($("#occurrence option:selected").val());
-        console.log($('#occurrence-description').val());
-
-        $('#btnPosition').on('click', function () {
-            let latitude = marker.getPosition().lat();
-            let longitude = marker.getPosition().lng();
+        $('.btnReport').on('click', function () {
+            var _latitude = marker.getPosition().lat();
+            var _longitude = marker.getPosition().lng();
             let option = opt;
             let description = desc;
 
-
-            Swal.fire({
-                title: "<i>Os dados informados foram:</i>",
-                html: "Option: " + opt + "<br>Description: " + desc + "<br>Latitude: " + latitude + "<br>Longitude: " + longitude,
-                confirmButtonText: "V <u>redu</u>",
-            });
+            console.log(JSON.stringify({
+                latitude: _latitude,
+                longitude: _longitude
+            }));
 
             $.ajax({
-                url: "https://localhost:44335/helpbuy/getbystatus",
-                type: 'post',
-                data: {
-                    latitude: "Maria Fernanda",
-                    longitude: '3500'
+                url: 'https://localhost:7280/Map/create',
+                type: 'POST',
+                headers: { 'APIKey': localStorage.getItem('l'), 'APIVersion': '1.0' },
+                contentType: 'application/json',
+                async: false,
+                processData: false,
+                crossDomain: true,
+                data: function (d) {
+                    return JSON.stringify({
+                        latitude: _latitude,
+                        longitude: _longitude
+                    });
                 },
-                beforeSend: function () {
-                    $("#resultado").html("ENVIANDO...");
+                success: function (data) {
+                    //console.log(data);
+                },
+                error: function (ex) {
+                    //console.log(ex);
                 }
-            }).done(function (msg) {
-                    $("#resultado").html(msg);
-                })
-                .fail(function (jqXHR, textStatus, msg) {
-                    alert(msg);
-                });
+            });
+
+
+            //Swal.fire({
+            //    title: "<i>Os dados informados foram:</i>",
+            //    html: "Option: " + opt + "<br>Description: " + desc + "<br>Latitude: " + latitude + "<br>Longitude: " + longitude,
+            //    confirmButtonText: "V <u>redu</u>",
+            //});
 
         });
     });
