@@ -1,4 +1,5 @@
-﻿using Report.Auth.Databases;
+﻿using Report._Common;
+using Report.Auth.Databases;
 using Report.Common.Entities;
 using Report.Map.Entities;
 using System.Data;
@@ -7,16 +8,22 @@ namespace Report.Map
 {
     public class MapRepository : BaseRepository
     {
-        public async Task<bool> Create(MapCreate mapCreate)
+
+        public struct Column
+        {
+            public const string Hash = "HASH";
+        }
+
+        public async Task<OccurrenceHash> Create(MapCreate mapCreate)
         {
             try
             {
                 CustomParams = new List<SQLParameterCustom>();
-
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.LATITUDE, mapCreate.Latitude));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.LONGITUDE, mapCreate.Longitude));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.CREATED, mapCreate.Created));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.UPDATED, mapCreate.Updated));
+                CustomParams.Add(new SQLParameterCustom(MapDataParams.DESCRIPTION, mapCreate.OccurrenceDescription));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.CREATED_BY, mapCreate.CreatedBy, true));
                 CustomParams.Add(new SQLParameterCustom(MapDataParams.UPDATED_BY, mapCreate.UpdatedBy, true));
                 //CustomParams.Add(new SQLParameterCustom(MapDataParams.GEOLOCATION, mapCreate.Geolocation, true));
@@ -26,14 +33,17 @@ namespace Report.Map
 
                 DataSet ds = await dt.ExecuteProcedureParamsDataSet(MapDataProcedures.SPRPT_CR_OCCURRENCE, Params);
 
-                bool resp = false;
+                OccurrenceHash hash = new OccurrenceHash();
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    resp = true;
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        hash = new OccurrenceHash(row);
+                    }
                 }
 
-                return resp;
+                return hash;
             }
             catch (Exception ex)
             {

@@ -23,7 +23,7 @@ namespace Report.Map
 
         }
 
-        public async Task<bool> Create(Occurrence occurrence)
+        public async Task<OccurrenceHash> Create(Occurrence occurrence)
         {
             try
             {
@@ -36,6 +36,9 @@ namespace Report.Map
 
                 #region verify fields
 
+                occurrence.Latitude = occurrence.Latitude.Trim();
+                occurrence.Longitude = occurrence.Longitude.Trim();
+
                 #endregion
 
                 MapCreate mapCreate = new MapCreate();
@@ -43,11 +46,12 @@ namespace Report.Map
                 mapCreate.Longitude = decimal.Parse(occurrence.Longitude);
                 mapCreate.Created = DateTime.Now;
                 mapCreate.Updated = DateTime.Now;
+                mapCreate.OccurrenceDescription = occurrence.OccurrenceDescription;
 
                 mapCreate.CreatedBy = 1;
                 mapCreate.UpdatedBy = 1;
 
-                bool resp = false;
+                OccurrenceHash resp = new OccurrenceHash();
 
                 using (TransactionScope transactionScope = new TransactionScope())
                 {

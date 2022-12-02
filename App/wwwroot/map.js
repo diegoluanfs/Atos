@@ -31,31 +31,59 @@ function initMap() {
                 let option = opt;
                 let description = desc;
 
-                var occurrence = JSON.stringify({
-                    latitude: _latitude + "",
-                    longitude: _longitude + "",
-                    occurrenceType: $('#occurrence').val(),
-                    occurrenceDescription: $('#occurrence-description').val()
-                });
+                if (_latitude.value == 0 || _longitude.value == 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'You need to mark the position of the occurrence on the map!',
+                    });
+                }
+                else if ($('#occurrence').val() == 0) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Select the type of event!',
+                    });
+                }
+                else {
+                    var occurrence = JSON.stringify({
+                        latitude: _latitude + "",
+                        longitude: _longitude + "",
+                        occurrenceType: $('#occurrence').val(),
+                        occurrenceDescription: $('#occurrence-description').val()
+                    });
 
-                console.log(occurrence);
-
-                $.ajax({
-                    url: 'https://localhost:7280/Map/create',
-                    type: 'POST',
-                    headers: { 'APIKey': localStorage.getItem('l'), 'APIVersion': '1.0' },
-                    contentType: 'application/json',
-                    async: false,
-                    processData: false,
-                    crossDomain: true,
-                    data: occurrence,
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (ex) {
-                        console.log(ex);
-                    }
-                });
+                    $.ajax({
+                        url: 'https://localhost:7280/Map/create',
+                        type: 'POST',
+                        headers: { 'APIKey': localStorage.getItem('l'), 'APIVersion': '1.0' },
+                        contentType: 'application/json',
+                        async: false,
+                        processData: false,
+                        crossDomain: true,
+                        data: occurrence,
+                        success: function (resp) {
+                            var response = resp.result;
+                            if (resp.data.length != 0) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Your report has been saved successfully',
+                                    showConfirmButton: false,
+                                    timer: 5000
+                                })
+                            }
+                        },
+                        error: function (ex) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                                footer: '<a href="">' + ex + '</a>'
+                            })
+                        }
+                    });
+                }
             }
         });
     });
