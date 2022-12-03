@@ -12,5 +12,8 @@ namespace Report.Map.Entities
         public int? UpdatedBy { get; set; }
         public string? OccurrenceDescription { get; set; }
         public Geography? Geolocation { get; set; }
+        public Guid? HashUser { get; set; }
+        public Guid? HashOccurrence { get; set; }
+        public int IdOccurrenceType { get; set; }
     }
 }

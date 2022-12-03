@@ -1,4 +1,4 @@
-﻿namespace Report._Common.Entities
+﻿namespace Report.Common.Entities
 {
     public class OccurrenceType
     {

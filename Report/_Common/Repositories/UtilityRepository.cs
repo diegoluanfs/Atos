@@ -1,7 +1,6 @@
-﻿using Report._Common.Data.Databases;
-using Report.Common.Entities;
-using Report._Common.Entities;
+﻿using Report.Common.Entities;
 using System.Data;
+using Report.Common.Data.Databases;
 
 namespace Report._Common.Repositories
 {

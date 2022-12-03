@@ -23,7 +23,7 @@ namespace Report.Map
 
         }
 
-        public async Task<OccurrenceHash> Create(Occurrence occurrence)
+        public async Task<OccurrenceHash> Create(int? _currentUser, Occurrence occurrence)
         {
             try
             {
@@ -47,18 +47,35 @@ namespace Report.Map
                 mapCreate.Created = DateTime.Now;
                 mapCreate.Updated = DateTime.Now;
                 mapCreate.OccurrenceDescription = occurrence.OccurrenceDescription;
+                mapCreate.IdOccurrenceType = occurrence.OccurrenceType;
 
-                mapCreate.CreatedBy = 1;
-                mapCreate.UpdatedBy = 1;
+                if (_currentUser != 0)
+                {
+                    using (TransactionScope transactionScope = new TransactionScope())
+                    {
+                        //Check if user exists
+                        MapRepository mapsRepository = new MapRepository();
+                        mapCreate.HashUser = await mapsRepository.GetUserHash(_currentUser);
+                        mapCreate.CreatedBy = _currentUser;
+                        mapCreate.UpdatedBy = _currentUser;
+                        transactionScope.Complete();
+                    }
+                }
+                else
+                {
+                    mapCreate.CreatedBy = null;
+                    mapCreate.UpdatedBy = null;
+                    mapCreate.HashUser = Guid.NewGuid();
+                }
 
                 OccurrenceHash resp = new OccurrenceHash();
 
                 using (TransactionScope transactionScope = new TransactionScope())
                 {
-                    //Check if user exists
                     MapRepository mapsRepository = new MapRepository();
                     resp = await mapsRepository.Create(mapCreate);
-                    //Register Map and Create Maporization Key
+
+                    //with two hash is possible add in table user who reported
 
                     transactionScope.Complete();
                 }
@@ -112,5 +129,42 @@ namespace Report.Map
             }
         }
 
+        public async Task<IList<Marker>> GetAll(string _remoteIP)
+        {
+            try
+            {
+                #region default user verification
+                //Check who is requesting
+
+                //Check user permission
+
+                #endregion
+
+                #region verify fields
+
+                #endregion
+                IList<Marker> occurrences = new List<Marker>();
+
+                using (TransactionScope transactionScope = new TransactionScope())
+                {
+                    //Check if user exists
+                    MapRepository mapsRepository = new MapRepository();
+                    occurrences = await mapsRepository.GetAll();
+                    //Register Map and Create Maporization Key
+
+                    transactionScope.Complete();
+                }
+
+                return occurrences;
+            }
+            catch (BusinessException eb)
+            {
+                throw eb;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

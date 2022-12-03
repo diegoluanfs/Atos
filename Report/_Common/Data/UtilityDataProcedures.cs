@@ -1,4 +1,4 @@
-﻿namespace Report._Common.Data.Databases
+﻿namespace Report.Common.Data.Databases
 {
     public class UtilityDataProcedures
     {
