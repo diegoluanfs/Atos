@@ -1,15 +1,27 @@
-﻿
+﻿var markers;
 
 // Initialize and add the map
 function initMap() {
     navigator.geolocation.getCurrentPosition(position => {
         const { latitude, longitude } = position.coords;
         var myLatlng = new google.maps.LatLng(latitude, longitude);
-        var mapOptions = {
+        map = new google.maps.Map(document.getElementById("map"), {
             zoom: 12,
-            center: myLatlng
-        }
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            center: { lat: latitude, lng: longitude },
+            mapTypeId: "terrain",
+        });
+
+
+        // Create a <script> tag and set the USGS URL as the source.
+        const script = document.createElement("script");
+
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src =
+            "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
+        document.getElementsByTagName("head")[0].appendChild(script);
+
+
 
         // Place a draggable marker on the map
         var marker = new google.maps.Marker({
@@ -111,7 +123,7 @@ $.ajax({
 });
 
 $('.btnView').on('click', function () {
-    if ($('.btnView').hasClass('return')){
+    if ($('.btnView').hasClass('return')) {
         $('.map-controls').removeClass('d-none');
         $('.btnReport').removeClass('d-none');
         $('.btnView').removeClass('return');
@@ -122,10 +134,43 @@ $('.btnView').on('click', function () {
         $('.btnView').addClass('return');
         $('.btnView').html('Return');
     }
-})
+});
+
+function GetMarkers() {
+    $.ajax({
+        url: 'https://localhost:7280/map/getall',
+        type: 'GET',
+        headers: { 'APIKey': '', 'APIVersion': '1.0' },
+        contentType: 'application/json',
+        async: false,
+        processData: false,
+        crossDomain: true,
+        data: {},
+        success: function (resp) {
+            markers = resp.data;
+        },
+        error: function (ex) {
+            //console.log(ex);
+        }
+    });
+}
+
+
+// Loop through the results array and place a marker for each
+// set of coordinates.
+const eqfeed_callback = function (results) {
+    GetMarkers();
+    $(markers).each(function (index, element) {
+        const latLng = new google.maps.LatLng(element.latitude, element.longitude);
+        new google.maps.Marker({
+            position: latLng,
+            map: map,
+        });
+    });
+};
 
 window.initMap = initMap;
-
+window.eqfeed_callback = eqfeed_callback;
 
 
 
