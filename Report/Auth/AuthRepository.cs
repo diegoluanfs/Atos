@@ -221,7 +221,7 @@ namespace Report.Auth
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         login.Id = Int32.Parse(row["ID"].ToString());
-                        login.Hash = row["ID_HASH"].ToString();
+                        login.Hash = row["HASH_USER"].ToString();
                         login.Password = row["PASS"].ToString();
                     }
                 }

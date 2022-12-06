@@ -9,5 +9,4 @@ $(document).ready(function () {
             $('.main-report').addClass('d-none');
         }
     });
-
 });

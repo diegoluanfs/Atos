@@ -1,6 +1,6 @@
 
-IF NOT EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND OBJECT_ID = OBJECT_ID('[DBO].[SPRPT_RT_LOGIN]'))
-   EXEC('CREATE PROCEDURE [DBO].[SPRPT_RT_LOGIN] AS BEGIN SET NOCOUNT ON; END')
+IF NOT EXISTS (SELECT * FROM SYS.OBJECTS WHERE TYPE = 'P' AND OBJECT_ID = OBJECT_ID('[DBO].[SPRPT_CR_KEY_ACCESS]'))
+   EXEC('CREATE PROCEDURE [DBO].[SPRPT_CR_KEY_ACCESS] AS BEGIN SET NOCOUNT ON; END')
 GO
 
 SET ANSI_NULLS ON
@@ -19,18 +19,25 @@ GO
 -- TEST: 
 -------------------------------------------------------------------------------------------------------------------------
 
- EXEC [dbo].[SPRPT_RT_LOGIN]
-	  @LOGIN	/*	VARCHAR(50)	*/	= NULL
-									
-									
+ EXEC [dbo].[SPRPT_CR_KEY_ACCESS]
+	 @CREATED	/* INT			*/ = '2022-11-01 00:00:00'
+	,@FK_USER		/* VARCHAR(256)	*/ = '116'
+	,@HASH		/* VARCHAR(100)	*/ = 'B245B428-375D-4308-8AE1-35327E58F821'
+	,@KEY		/* VARCHAR(256)	*/ = '123456'
+	,@IP			/* VARCHAR(100) */ = '::1'
+			
+			
 -------------------------------------------------------------------------------------------------------------------------
 
 */			
-
-ALTER PROCEDURE [dbo].[SPRPT_RT_LOGIN]
+ALTER PROCEDURE [dbo].[SPRPT_CR_KEY_ACCESS]
 (	 
- 	
-	  @LOGIN		VARCHAR(50)
+	 @CREATED	DATETIME
+	,@FK_USER		VARCHAR(256)
+	,@HASH		VARCHAR(100)
+	,@KEY		VARCHAR(256)
+	,@IP			VARCHAR(100)
+	,@EXPIRE	DATETIME
 	
 )
 AS
@@ -43,19 +50,33 @@ SET NOCOUNT ON
 
 BEGIN TRY
 
-	
-
 -------------------------------------------------------------------------------------------------------------------------
 -- RETURN RECORD
 -------------------------------------------------------------------------------------------------------------------------
 
+UPDATE ACCESS_KEY_CLIENT SET ID_STATUS = 2 WHERE FK_USER = @FK_USER AND ID_STATUS = 1
 
-			SELECT 
-				 HASH_USER
-				,ID
-				,PASS
-			  FROM [dbo].[USERS] (NOLOCK)
-			  WHERE [LOGIN]	= @LOGIN
+SET NOCOUNT OFF
+
+INSERT INTO ACCESS_KEY_CLIENT(
+			 CREATED
+			,FK_USER
+			,HASH
+			,[KEY]
+			,EXPIRE
+			,ID_STATUS
+			,IP
+		) 
+		VALUES 
+		(
+			 @CREATED
+			,@FK_USER
+			,@HASH
+			,@KEY
+			,@EXPIRE
+			,1
+			,@IP
+		)
 				
 END TRY
 

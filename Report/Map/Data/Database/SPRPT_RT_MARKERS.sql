@@ -20,7 +20,7 @@ GO
 -------------------------------------------------------------------------------------------------------------------------
 
  EXEC [dbo].[SPRPT_RT_MARKERS]
-	  @LOGIN	/*	VARCHAR(50)	*/	= NULL
+	  @ID	/*	VARCHAR(50)	*/	= NULL
 									
 									
 -------------------------------------------------------------------------------------------------------------------------
@@ -49,9 +49,10 @@ BEGIN TRY
 
 
 		SELECT 
-				HASH
+			 HASH_OCCURRENCE AS HASH
 			,LATITUDE
 			,LONGITUDE
+			,ID_OCCURRENCE_TYPE
 			,DESCRIPTION
 			FROM [dbo].[OCCURRENCES] (NOLOCK)
 				
