@@ -1,104 +1,121 @@
-﻿var markers;
+﻿
+var latitude, longitude;
 
-// Initialize and add the map
+if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+        },
+        function (error) {
+            console.log(error)
+        }
+    )
+}
+
+let map;
+
 function initMap() {
-    navigator.geolocation.getCurrentPosition(position => {
-        const { latitude, longitude } = position.coords;
-        var myLatlng = new google.maps.LatLng(latitude, longitude);
-        map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 12,
-            center: { lat: latitude, lng: longitude },
-            mapTypeId: "terrain",
-        });
+    //map = new google.maps.Map(document.getElementById("map"), {
+    //    center: { lat: latitude, lng: longitude },
+    //    zoom: 8,
+    //});
+
+    var myLatlng = new google.maps.LatLng(latitude, longitude);
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: { lat: latitude, lng: longitude },
+        mapTypeId: "terrain",
+    });
 
 
-        // Create a <script> tag and set the USGS URL as the source.
-        const script = document.createElement("script");
+    // Create a <script> tag and set the USGS URL as the source.
+    const script = document.createElement("script");
 
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        script.src =
-            "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
-        document.getElementsByTagName("head")[0].appendChild(script);
+    // This example uses a local copy of the GeoJSON stored at
+    // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    script.src =
+        "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
 
 
 
-        // Place a draggable marker on the map
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            draggable: true,
-            title: "Alert!"
-        });
+    // Place a draggable marker on the map
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        draggable: true,
+        title: "Alert!"
+    });
 
-        var opt = $("#occurrence option:selected").val();
-        var desc = $('#occurrence-description').val();
+    var opt = $("#occurrence option:selected").val();
+    var desc = $('#occurrence-description').val();
 
-        var cont = 0;
-        $('.btnReport').on('click', function () {
-            cont++;
-            if (cont > 1) {
-                var _latitude = marker.getPosition().lat();
-                var _longitude = marker.getPosition().lng();
-                let option = opt;
-                let description = desc;
+    var cont = 0;
+    $('.btnReport').on('click', function () {
+        cont++;
+        if (cont > 1) {
+            var _latitude = marker.getPosition().lat();
+            var _longitude = marker.getPosition().lng();
+            let option = opt;
+            let description = desc;
 
-                if (_latitude.value == 0 || _longitude.value == 0) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'You need to mark the position of the occurrence on the map!',
-                    });
-                }
-                else if ($('#occurrence').val() == 0) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Select the type of event!',
-                    });
-                }
-                else {
-                    var occurrence = JSON.stringify({
-                        latitude: _latitude + "",
-                        longitude: _longitude + "",
-                        occurrenceType: $('#occurrence').val(),
-                        occurrenceDescription: $('#occurrence-description').val()
-                    });
+            if (_latitude.value == 0 || _longitude.value == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'You need to mark the position of the occurrence on the map!',
+                });
+            }
+            else if ($('#occurrence').val() == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Select the type of event!',
+                });
+            }
+            else {
+                var occurrence = JSON.stringify({
+                    latitude: _latitude + "",
+                    longitude: _longitude + "",
+                    occurrenceType: $('#occurrence').val(),
+                    occurrenceDescription: $('#occurrence-description').val()
+                });
 
-                    $.ajax({
-                        url: 'https://localhost:7280/Map/create',
-                        type: 'POST',
-                        headers: { 'APIKey': localStorage.getItem('l'), 'APIVersion': '1.0' },
-                        contentType: 'application/json',
-                        async: false,
-                        processData: false,
-                        crossDomain: true,
-                        data: occurrence,
-                        success: function (resp) {
-                            var response = resp.result;
-                            if (resp.data.length != 0) {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Your report has been saved successfully',
-                                    showConfirmButton: false,
-                                    timer: 5000
-                                })
-                            }
-                        },
-                        error: function (ex) {
+                $.ajax({
+                    url: 'https://localhost:7280/Map/create',
+                    type: 'POST',
+                    headers: { 'APIKey': localStorage.getItem('l'), 'APIVersion': '1.0' },
+                    contentType: 'application/json',
+                    async: false,
+                    processData: false,
+                    crossDomain: true,
+                    data: occurrence,
+                    success: function (resp) {
+                        var response = resp.result;
+                        if (resp.data.length != 0) {
                             Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong!',
-                                footer: '<a href="">' + ex + '</a>'
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Your report has been saved successfully',
+                                showConfirmButton: false,
+                                timer: 5000
                             })
                         }
-                    });
-                }
+                    },
+                    error: function (ex) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: '<a href="">' + ex + '</a>'
+                        })
+                    }
+                });
             }
-        });
+        }
     });
+
 }
 
 
@@ -122,20 +139,6 @@ $.ajax({
     }
 });
 
-$('.btnView').on('click', function () {
-    if ($('.btnView').hasClass('return')) {
-        $('.map-controls').removeClass('d-none');
-        $('.btnReport').removeClass('d-none');
-        $('.btnView').removeClass('return');
-        $('.btnView').html('View');
-    } else {
-        $('.map-controls').addClass('d-none');
-        $('.btnReport').addClass('d-none');
-        $('.btnView').addClass('return');
-        $('.btnView').html('Return');
-    }
-});
-
 function GetMarkers() {
     $.ajax({
         url: 'https://localhost:7280/map/getall',
@@ -156,6 +159,9 @@ function GetMarkers() {
 }
 
 
+
+
+
 // Loop through the results array and place a marker for each
 // set of coordinates.
 const eqfeed_callback = function (results) {
@@ -171,6 +177,3 @@ const eqfeed_callback = function (results) {
 
 window.initMap = initMap;
 window.eqfeed_callback = eqfeed_callback;
-
-
-
