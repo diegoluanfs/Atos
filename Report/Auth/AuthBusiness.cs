@@ -115,15 +115,15 @@ namespace Report.Auth
 
                 #region verify fields
                 //validates input information
-                if (String.IsNullOrEmpty(signInReq.Email) || String.IsNullOrEmpty(signInReq.Password))
+                if (String.IsNullOrEmpty(signInReq.Login) || String.IsNullOrEmpty(signInReq.Password))
                 {
                     //throw new BusinessException();
                 }
 
-                signInReq.Email = signInReq.Email.Trim();
+                signInReq.Login = signInReq.Login.Trim();
                 signInReq.Password = signInReq.Password.Trim();
 
-                if (!Regex.IsMatch(signInReq.Email, RegexEmail))
+                if (!Regex.IsMatch(signInReq.Login, RegexEmail))
                 {
                     //throw new BusinessExcepetion();
                 }
@@ -138,7 +138,7 @@ namespace Report.Auth
 
                 AuthRepository usersRepository = new AuthRepository();
 
-                Login login = await usersRepository.GetLogin(signInReq.Email);
+                Login login = await usersRepository.GetLogin(signInReq.Login);
 
                 if (!String.IsNullOrEmpty(login.Password))
                 {

@@ -12,7 +12,7 @@ namespace Report.Auth
             try
             {
                 Database dt = new Database();
-                DataSet ds = await dt.ExecuteProcedureDataSet(DataProcedures.SPZIP_RT_LOGIN_EXISTS);
+                DataSet ds = await dt.ExecuteProcedureDataSet(AuthDataProcedures.SPZIP_RT_LOGIN_EXISTS);
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -71,7 +71,7 @@ namespace Report.Auth
             {
                 CustomParams = new List<SQLParameterCustom>();
 
-                CustomParams.Add(new SQLParameterCustom(AuthDataParams.EMAIL, signInReq.Email));
+                CustomParams.Add(new SQLParameterCustom(AuthDataParams.EMAIL, signInReq.Login));
                 CustomParams.Add(new SQLParameterCustom(AuthDataParams.NAME, signInReq.Password));
 
                 Database dt = new Database();

@@ -84,19 +84,17 @@ namespace Report.Users
             }
         }
 
-        [Route("users")]
-        [HttpDelete]
+        [Route("users/create")]
+        [HttpPost]
         //[EnableCors("MyPolicy")]
-        public async Task<IActionResult> Cancel()
+        public async Task<IActionResult> Create(CreateReq createReq)
         {
             try
             {
-                _currentUser = await _keyManager.ValidateKey(_key);
-
                 UsersBusiness usersBusiness = new UsersBusiness();
-                var resp = usersBusiness.Cancel();
+                var resp = await usersBusiness.Create(createReq);
 
-                return StatusCode(201, new Return() { Data = resp });
+                return StatusCode(200, new Return() { Data = resp });
             }
             catch (BusinessException eb)
             {
@@ -111,21 +109,21 @@ namespace Report.Users
             catch (Exception ex)
             {
                 //await new LogService().CreatePurchase(new LogObject() { Created = DateTime.Now, IP = _remoteIP, Object = JsonConvert.SerializeObject(helpbuy), User = _currentUser == null ? 0 : _currentUser.IdUser, Information = ex.ToString() });
-                return StatusCode(500, new Return() { Data = null, Message = "Internal Server Error!", ErrorCode = "log service number" });
+                return StatusCode(500, new Return() { Data = null, Message = ex.Message, ErrorCode = "log service number" });
             }
         }
 
-        [Route("user/logout")]
-        [HttpGet]
+        [Route("users")]
+        [HttpDelete]
         //[EnableCors("MyPolicy")]
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Cancel()
         {
             try
             {
                 _currentUser = await _keyManager.ValidateKey(_key);
 
                 UsersBusiness usersBusiness = new UsersBusiness();
-                var resp = usersBusiness.Logout();
+                var resp = usersBusiness.Cancel();
 
                 return StatusCode(201, new Return() { Data = resp });
             }

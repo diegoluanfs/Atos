@@ -46,7 +46,7 @@ namespace Report.Auth
         [Route("auth/signin")]
         [HttpPost]
         ////[EnableCors("MyPolicy")]
-        public async Task<IActionResult> SignIn(SignInReq signInReq)
+        public async Task<IActionResult> SignIn([FromBody] SignInReq signInReq)
         {
             try
             {

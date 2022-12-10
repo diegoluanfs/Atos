@@ -23,7 +23,7 @@ function initMap() {
 
     var myLatlng = new google.maps.LatLng(latitude, longitude);
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
+        zoom: 11,
         center: { lat: latitude, lng: longitude },
         mapTypeId: "terrain",
     });

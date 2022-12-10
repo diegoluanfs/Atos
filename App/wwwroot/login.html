@@ -70,7 +70,7 @@
                 <!-- Navbar nav -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " href="./about-us.html">About Us</a>
+                        <!--<a class="nav-link " href="./about-us.html">About Us</a>-->
                     </li>
                     <li class="nav-item">
                         <!--<a class="nav-link " href="./menu.html">Menu</a>-->
@@ -106,32 +106,32 @@
                 <div class="row justify-content-center main-report " id="main-report">
                     <div class="col-12 col-md-8 col-lg-6 text-center">
 
-                        <form class="bg-white p-2 rounded-3">
+                        <form class="bg-white p-4 rounded-3">
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input type="email" id="form2Example1" class="form-control" />
                                 <label class="form-label" for="form2Example1">Email address</label>
+                                <input type="email" id="login" class="form-control" />
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="form2Example2" class="form-control" />
                                 <label class="form-label" for="form2Example2">Password</label>
+                                <input type="password" id="password" class="form-control" />
                             </div>
 
                             <div class="row justify-content-between">
                                 <div class="col-4">
-                                    <a href="#!">Sign Up</a>
+                                    <a href="./signup.html">Sign Up</a>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4 w-25">
                                     <input class="form-check-input" type="checkbox" value="" id="remember-me" checked />
                                     <label class="form-check-label" for="form2Example31"> Remember me </label>
-                                    <a href="/forgot-password.html">Forgot password?</a>
+                                    <a href="/forgot-password.html" class=" w-25">Forgot password?</a>
                                 </div>
                             </div>
 
                             <!-- Submit button -->
-                            <button type="button" class="btn btn-primary btn-block mb-4 signIn">Sign in</button>
+                            <button type="button" class="btn btn-primary btn-block signIn pt-2">Sign in</button>
 
                         </form>
 
@@ -168,15 +168,10 @@
         <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100;"><div style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(assets/img/1.jpg); position: fixed; top: 0px; left: 0px; width: 1519.2px; height: 749.68px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0.159985px; transform: translate3d(0px, -0.159985px, 0px);"></div></div>
     </header>
 
-    <!-- API Google -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuL0tTB5PujbUlsyXE8pd_eaGTf02kBQc&callback=initMap&v=weekly" defer></script>
-
-
     <!-- JAVASCRIPT -->
     <!-- Vendor JS -->
     <script src="./assets/js/vendor.bundle.js"></script>
     <script src="login.js"></script>
-    <script src="map.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Theme JS -->

@@ -1,4 +1,5 @@
-﻿using Report.Common.Entities;
+﻿
+using Report.Common.Entities;
 using Report.Users.Databases;
 using Report.Users.Entities;
 using System.Data;
@@ -11,8 +12,13 @@ namespace Report.Users
         {
             try
             {
+                CustomParams = new List<SQLParameterCustom>();
+
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.LOGIN, login));
+
                 Database dt = new Database();
-                DataSet ds = await dt.ExecuteProcedureDataSet(DataProcedures.SPZIP_RT_LOGIN_EXISTS);
+                Params = dt.CreateParameter(CustomParams);
+                DataSet ds = await dt.ExecuteProcedureParamsDataSet(UsersDataProcedures.SPZIP_RT_LOGIN_EXISTS, Params);
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -69,9 +75,8 @@ namespace Report.Users
 
                 CustomParams = new List<SQLParameterCustom>();
 
-                CustomParams.Add(new SQLParameterCustom(UsersDataParams.CHANGE_PASSWORD_ID_USER, idUser));
-                CustomParams.Add(new SQLParameterCustom(UsersDataParams.CHANGE_PASSWORD_TX_NEW_PASSWORD, changePasswordReq.NewPassword));
-                CustomParams.Add(new SQLParameterCustom(UsersDataParams.CHANGE_PASSWORD_TX_NEW_PASSWORD, changePasswordReq.NewPassword));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.ID_USER, idUser));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.NEW_PASSWORD, changePasswordReq.NewPassword));
 
                 Database dt = new Database();
                 Params = dt.CreateParameter(CustomParams);
@@ -96,8 +101,8 @@ namespace Report.Users
             {
                 CustomParams = new List<SQLParameterCustom>();
 
-                CustomParams.Add(new SQLParameterCustom(UsersDataParams.UPDATE_ID_USER, idUser));
-                CustomParams.Add(new SQLParameterCustom(UsersDataParams.UPDATE_TX_NAME, updateReq.Name));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.ID_USER, idUser));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.NAME, updateReq.Name));
 
                 Database dt = new Database();
                 Params = dt.CreateParameter(CustomParams);
@@ -123,45 +128,34 @@ namespace Report.Users
                 throw;
             }
         }
-        //public async Task<SignInUserResp> Get()
-        //{
-        //    try
-        //    {
-        //        //valida as informações do obj de entrada
 
-        //        //Verifica se usuário existe
-
-        //        //var resp = usersRepository.SignUp(SignUpReq);
-
-        //        //Registrar usuário
-
-        //        //Criar chave de autorização
-
-        //        SignInUserResp signInUserResp = new SignInUserResp();
-        //        return signInUserResp;
-        //    }
-        //    catch (BusinessException eb)
-        //    {
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
-        public async Task<bool> Logout()
+        public async Task<bool> Create(CreateReqInt createReqInt)
         {
+            bool resp = false;
+
             try
             {
-                //Pega as informações passadas pelo header, com informações do usuário
+                CustomParams = new List<SQLParameterCustom>();
 
-                //var resp = usersRepository.SignUp(SignUpReq);
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.FULL_NAME, createReqInt.FullName));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.DOCUMENT, createReqInt.Document));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.EMAIL, createReqInt.Email));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.CREATED, createReqInt.Created));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.UPDATED, createReqInt.Updated));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.CREATED_BY, createReqInt.CreatedBy));
+                CustomParams.Add(new SQLParameterCustom(UsersDataParams.UPDATED_BY, createReqInt.UpdatedBy));
+                
+                Database dt = new Database();
+                Params = dt.CreateParameter(CustomParams);
 
-                return true;
-            }
-            catch (BusinessException eb)
-            {
-                throw;
+                DataSet ds = await dt.ExecuteProcedureParamsDataSet(UsersDataProcedures.SPRPT_CR_USER, Params);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    resp = true;
+                }
+
+                return resp;
             }
             catch (Exception ex)
             {
