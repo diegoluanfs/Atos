@@ -19,21 +19,12 @@ function initMap() {
             title: "Alert!"
         });
 
-        var opt = $("#occurrence option:selected").val();
-        var desc = $('#occurrence-description').val();
-
         var cont = 0;
         $('.btnReport').on('click', function () {
             cont++;
             if (cont > 1) {
-
-                console.log('opt', opt);
-                console.log('desc', desc);
-
                 var _latitude = marker.getPosition().lat();
                 var _longitude = marker.getPosition().lng();
-                let option = opt;
-                let description = desc;
 
                 if (_latitude.value == 0 || _longitude.value == 0) {
                     Swal.fire({
@@ -77,6 +68,8 @@ function initMap() {
                                     timer: 5000
                                 })
                             }
+                            $('#occurrence-description').val('');
+                            $('#occurrence').val('');
                         },
                         error: function (ex) {
                             Swal.fire({
