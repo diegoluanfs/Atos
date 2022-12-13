@@ -94,7 +94,7 @@ namespace Report.Map
                     {
                         Marker marker = new Marker();
                         marker.Hash = DbParse<Guid>(row, MapDataColumns.HASH);
-                        marker.Description = DbParse<string>(row, MapDataColumns.DESCRIPTION).ToString();
+                        marker.Description = DbParse<string>(row, MapDataColumns.DESCRIPTION);
                         marker.Latitude = DbParse<decimal>(row, MapDataColumns.LATITUDE);
                         marker.Longitude = DbParse<decimal>(row, MapDataColumns.LONGITUDE);
                         marker.IdOccurrenceType = DbParse<int>(row, MapDataColumns.ID_OCCURRENCE_TYPE);
