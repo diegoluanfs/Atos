@@ -12,14 +12,16 @@ namespace Report.Map
         private string _key;
         private string _version;
         private string _remoteIP;
-        private int? _currentUser;
+        private int _currentUser;
         private IKeyManager _keyManager;
 
         public MapController(IHttpContextAccessor httpContextAccessor, IKeyManager keyManager)
         {
             _remoteIP = httpContextAccessor.HttpContext.Features.Get<IHttpConnectionFeature>()?.RemoteIpAddress.ToString();
+            _key = httpContextAccessor.HttpContext.Request.Headers["ApiKey"];
             _keyManager = keyManager;
         }
+
 
         [Route("map/create")]
         [HttpPost]
@@ -28,18 +30,10 @@ namespace Report.Map
         {
             try
             {
-                OccurrenceHash resp;
-                if (String.IsNullOrEmpty(_key))
-                {
-                    MapBusiness userBusiness = new MapBusiness();
-                    resp = await userBusiness.Create(0, occurrence);
-                }
-                else
-                {
-                    _currentUser = await _keyManager.ValidateKey(_key);
-                    MapBusiness userBusiness = new MapBusiness();
-                    resp = await userBusiness.Create(_currentUser, occurrence);
-                }
+                //_currentUser = await _keyManager.ValidateKey(_key);
+
+                MapBusiness userBusiness = new MapBusiness();
+                OccurrenceHash resp = await userBusiness.Create(_currentUser, occurrence);
 
                 return StatusCode(201, new Return() { Data = resp });
             }

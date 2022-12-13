@@ -26,6 +26,10 @@ function initMap() {
         $('.btnReport').on('click', function () {
             cont++;
             if (cont > 1) {
+
+                console.log('opt', opt);
+                console.log('desc', desc);
+
                 var _latitude = marker.getPosition().lat();
                 var _longitude = marker.getPosition().lng();
                 let option = opt;

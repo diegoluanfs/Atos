@@ -18,6 +18,7 @@ namespace Report.Map
             _keyManager = keyManager;
         }
 
+
         public MapBusiness()
         {
 

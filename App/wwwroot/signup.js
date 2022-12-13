@@ -1,10 +1,8 @@
 ﻿
-
 $(document).ready(function () {
     var filterEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-    //setPickadate();
-
+    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    
     $('.signup').on('click', function () {
         if ($('#full-name').val() == '') {
             $('#full-name').focus();
@@ -14,22 +12,21 @@ $(document).ready(function () {
                 text: 'You need to fill in the Full Name field!'
             });
         }
+        else if (!regName.test($('#full-name').val())) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Incorrect name format!'
+            });
+        }
         else if ($('#document').val() == '') {
             $('#document').focus();
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'You need to fill in the document field!'
-            })
+            });
         }
-        //else if ($('#birth-date').val() == '') {
-        //    $('#birth-date').focus();
-        //    Swal.fire({
-        //        icon: 'error',
-        //        title: 'Oops...',
-        //        text: 'You need to fill in the birth date field!'
-        //    })
-        //}
         else if (!filterEmail.test($('#email').val())) {
             $('#email').focus();
             if ($('#email').val() == '') {

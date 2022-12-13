@@ -50,6 +50,9 @@ namespace Report.Auth
         {
             try
             {
+
+                string origin = HttpContext.Request.Headers.Origin.ToString();
+
                 var data = new SignInResp();
                 AuthBusiness userBusiness = new AuthBusiness(_keyManager);
                 var resp = await userBusiness.SignIn(signInReq, _remoteIP);
@@ -126,10 +129,10 @@ namespace Report.Auth
             }
         }
 
-        [Route("auth/logout")]
+        [Route("auth/signout")]
         [HttpPost]
         //[EnableCors("MyPolicy")]
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> SignOut()
         {
             try
             {
