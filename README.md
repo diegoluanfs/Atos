@@ -1,5 +1,5 @@
 <h1 align="center"> Touché Report </h1>
-https://img.shields.io/github/contributors/diegoluanfs/atos?style=social
+
 <p> Olá, me chamo <a href="https://www.linkedin.com/in/diego-silva-442216199/">Diego</a> e vou apresentar a aplicação Touché Report, que tem como função principal, reportar ocorrências policias de forma simultânea e indicar onde aconteceram crimes.</p>
 
 <p>Esse projeto foi desenvolvido como trabalho final da 4ª Academia .Net, ministrado pela empresa <a href="https://www.linkedin.com/company/atos/">Atos</a> em parceria com a <a href="https://www.linkedin.com/school/ufnuniversidadefranciscana/">Universidade Franciscana - UFN</a>. </p>
