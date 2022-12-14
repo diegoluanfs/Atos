@@ -43,7 +43,7 @@
 :heavy_check_mark: CSS
 :heavy_check_mark: JavaScript
 :heavy_check_mark: Bootstrap
-:heavy_check_mark: <a href=" https://sweetalert2.github.io/">SweetAlert2</a>
+:heavy_check_mark: <a href="https://sweetalert2.github.io/">SweetAlert2</a>
 
 <h2>⚙ Back-End ⚙</h2>
 
