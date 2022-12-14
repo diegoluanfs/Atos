@@ -52,10 +52,11 @@
 <h2>🛠 Tools 🛠</h2>
 
 :heavy_check_mark: Json
+:heavy_check_mark: Sql Server
   
 <h1 name="status-do-Projeto">🚀 Status do projeto 🚀</h1>
 
-<p>A versão 0 do projeto já está disponível, com as funcionalidades principais já implementadas.
+<p>A primeira versão do projeto já está disponível, com as funcionalidades principais já implementadas e agora o foco está na dilapidação e limpeza do código.</p>
 
 <h1 name="funcionalidades-e-demonstração-da-aplicação">🕶 Demonstração da aplicação e funcionalidades 🕶</h1>
 
@@ -97,8 +98,6 @@ A página index.html faz com que o usuário acesse o sistema, mas não carregue 
 
 <p>Caso o usuário resolva voltar a página index, basta ele clicar em 'Logout', no canto superior direito da tela.</p>
 
-
-
 :hammer: Funcionalidades do projeto
 
 - `View Map`: Serve para visualizar o mapa com as ocorrências já existentes
@@ -114,13 +113,16 @@ A página index.html faz com que o usuário acesse o sistema, mas não carregue 
 <img src="https://user-images.githubusercontent.com/45635129/207687654-bef1f8a6-bd7f-4cc0-bc55-8925e95f225a.png" width="400" margin="auto">
 </p>
 
+<p>Falando sobre diagramas, para facilitar o entendimento sobre a estrutura das tabelas construídas no Sql Server, foi gerado um diagrama de banco de dados, baseado na estrutura que comporta esse sistema:</p>
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/45635129/207720793-67f94500-288a-487f-9b8b-e689bc3416e7.png" width="400" margin="auto">
+</p>
 
 <h1 name="pessoas-contribuidoras">🙋 Pessoas Contribuidoras 🙋</h1>
 
 * <a href="https://www.linkedin.com/in/diego-silva-442216199/">Diego Luan</a>
   
-<p>Abaixo temos a representação do diagrama de caso de uso que representa a aplicação.</p>
-
 <h1 name="licença">Licença</h1>
 
 <p>Touché Report is licensed as found in the <a href="https://github.com/diegoluanfs/Atos/blob/master/LICENSE.md">LICENSE</a> file.</p>
