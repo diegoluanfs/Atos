@@ -43,6 +43,7 @@
 :heavy_check_mark: CSS
 :heavy_check_mark: JavaScript
 :heavy_check_mark: Bootstrap
+:heavy_check_mark: <a href=" https://sweetalert2.github.io/">SweetAlert2</a>
 
 <h2>⚙ Back-End ⚙</h2>
 
@@ -53,6 +54,8 @@
 
 :heavy_check_mark: Json
 :heavy_check_mark: Sql Server
+:heavy_check_mark: <a href="https://developers.google.com/maps">Google Maps Api</a>
+
   
 <h1 name="status-do-Projeto">🚀 Status do projeto 🚀</h1>
 
