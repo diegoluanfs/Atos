@@ -15,15 +15,11 @@
 * [Badges](#badges)
 * [Resumo](#resumo)
 * [Problemática Social](#problematica-social)
-[Descrição do Projeto](#descrição-do-projeto)
-[Status do Projeto](#status-do-Projeto)
-[Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
-[Acesso ao Projeto](#acesso-ao-projeto)
-[Tecnologias utilizadas](#tecnologias-utilizadas)
-[Pessoas Contribuidoras](#pessoas-contribuidoras)
-[Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
-[Licença](#licença)
-[Conclusão](#conclusão)
+* [Descrição do Projeto](#descrição-do-projeto)
+* [Status do Projeto](#status-do-Projeto)
+* [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
+* [Pessoas Contribuidoras](#pessoas-contribuidoras)
+* [Licença](#licença)
 
 <h1 name="Resumo">:tada:Resumo:tada:</h1>
 
@@ -39,11 +35,29 @@
 
 <p>O cenário atual, onde grande parte da população tem acesso a celulares e dispositivos eletrônicos conectados a internet é propício para o desenvolvimento aplicações multiplataforma e que sejam colaborativos. Pensando nisso, desenvolvemos a ideia do Touché Report, que consiste em uma aplicação de cunho colaborativo, onde as pessoas podem visualizar os crimes que aconteceram na região e também, reportar crimes.</p>
 
-<h1 name="descrição-do-projeto">:wrench:Descrição do Projeto:wrench:</h1>
+<h1 name="descrição-do-projeto">📖 Descrição do Projeto</h1>
 
-<p>Esse projeto está sendo desenvolvido <a href="https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api/">API Rest</a>, utilizando o padrão <a href="https://www.devmedia.com.br/introducao-ao-padrao-mvc/29308">MVC</a>
+<p>A aplicação serve para reportar crimes de forma simultânea ao acontecimento, ou seja, caso uma pessoa fique sabendo(ou presencie) um roubo, ela poderá reportar o crime e essa marcação ficará explícita no mapa para outros usuários que acessarem. Para isso, vamos utilizar a arquitetura <a href="https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api/">API Rest</a>, utilizando o padrão <a href="https://www.devmedia.com.br/introducao-ao-padrao-mvc/29308">MVC</a>. As tecnologias, linguagens de programação, frameworks estão separar em front-end, back-end e tools, disponibilizados logo abaixo:
   
-  é um estilo de arquitetura de software
+<h2>:art: Front-End :art:</h2>
+
+:heavy_check_mark: HTML
+:heavy_check_mark: CSS
+:heavy_check_mark: JavaScript
+:heavy_check_mark: Bootstrap
+
+<h2>⚙ Back-End ⚙</h2>
+
+:heavy_check_mark: C#
+:heavy_check_mark: Ado.Net
+
+<h2>🛠 Tools 🛠</h2>
+
+:heavy_check_mark: Json
+  
+<h1 name="descrição-do-projeto">🚀 Status do projeto 🚀</h1>
+
+<p>A versão 0 do projeto já está disponível, com as funcionalidades principais já implementadas.
 
 # :hammer: Funcionalidades do projeto
 
@@ -54,8 +68,19 @@
 - `Forgot password`: Utilizado para recuperar senha
 - `Report `: Funcionalidade que permite ao usuário(logado), realizar o reporte de uma ocorrência
 
+  
+<h1 name="pessoas-contribuidoras">🚀 Pessoas Contribuidoras 🚀</h1>
+
+* <a href="https://www.linkedin.com/in/diego-silva-442216199/">Diego Luan</a>
+  
 <p>Abaixo temos a representação do diagrama de caso de uso que representa a aplicação.</p>
 
 ![diagrama-caso-de-uso](https://user-images.githubusercontent.com/45635129/207687654-bef1f8a6-bd7f-4cc0-bc55-8925e95f225a.png)
+
+<h1 name="licença">Licença</h1>
+
+<p>Touché Report is licensed as found in the <a href="https://github.com/diegoluanfs/Atos/blob/master/LICENSE.md">LICENSE</a> file.</p>
+
+
 
 
