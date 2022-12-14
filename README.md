@@ -57,7 +57,7 @@
 
 <p>A versão 0 do projeto já está disponível, com as funcionalidades principais já implementadas.
 
-<h1 name="funcionalidades-e-demonstração-da-aplicação">Demonstração da aplicação e funcionalidades</h1>
+<h1 name="funcionalidades-e-demonstração-da-aplicação">🕶 Demonstração da aplicação e funcionalidades 🕶</h1>
 
 A página index.html faz com que o usuário acesse o sistema, mas não carregue de imediato as marcações do mapa:
 
