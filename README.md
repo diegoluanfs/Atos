@@ -96,6 +96,12 @@ A página index.html faz com que o usuário acesse o sistema, mas não carregue 
 <img src="https://user-images.githubusercontent.com/45635129/207718074-2f890799-f517-4ce5-8a09-f9a3b0e52619.png" width="400" margin="auto">
 </p>
 
+<p>Após realizar o cadastro de uma ocorrência, a aplicação mostra um pop-up de confirmação, conforme ilustrado abaixo:</p>
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/45635129/207724370-0624224a-ac4f-47e6-8532-0dc21882a714.png" width="400" margin="auto">
+</p>
+
 <p>Caso o usuário resolva voltar a página index, basta ele clicar em 'Logout', no canto superior direito da tela.</p>
 
 :hammer: Funcionalidades do projeto
