@@ -36,7 +36,7 @@ $(document).ready(function () {
                 success: function (resp) {
                     var response = resp.result;
                     if (resp.data.length != 0) {
-                        window.location = "https://localhost:44324/bo-register.html";
+                        window.location = "https://localhost:44324/bo-register/bo-register.html";
                     }
                 },
                 error: function (ex) {

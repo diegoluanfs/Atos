@@ -18,7 +18,7 @@ $(document).ready(function () {
                 'Email successfully sent',
                 'success'
             ).then(function () {
-                window.location = "https://localhost:44324/login.html";
+                window.location = "https://localhost:44324/login/login.html";
             });
         }
     });

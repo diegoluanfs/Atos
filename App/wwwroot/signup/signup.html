@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">-->
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon/manifest.json">
-    <link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="./assets/favicon/favicon.ico">
-    <meta name="msapplication-config" content="./assets/favicon/browserconfig.xml">
+    <!--<link rel="apple-touch-icon" sizes="180x180" href="./../assets/favicon/apple-touch-icon.png">-->
+    <link rel="icon" type="image/png" sizes="32x32" href="./../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./../assets/favicon/manifest.json">
+    <link rel="mask-icon" href="./../assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="./../assets/favicon/favicon.ico">
+    <meta name="msapplication-config" content="./../assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Libs CSS -->
-    <link rel="stylesheet" href="./assets/css/libs.bundle.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./../assets/css/libs.bundle.css">
+    <link rel="stylesheet" href="./signup.css">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="./assets/css/theme.bundle.css">
+    <link rel="stylesheet" href="./../assets/css/theme.bundle.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -31,7 +31,7 @@
     <title>Touché Report</title>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="assets/js/jquery.js"></script>
+    <script src="./../assets/js/jquery.js"></script>
 
 
     <style type="text/css" id="jarallax-clip-0">
@@ -57,7 +57,7 @@
     <nav class="navbar navbar-expand-lg navbar-togglable fixed-top navbar-dark">
         <div class="container">
             <!-- Navbar brand (mobile) -->
-            <a class="navbar-brand d-lg-none" href="./index.html">Touché Report</a>
+            <a class="navbar-brand d-lg-none" href="../index.html">Touché Report</a>
 
             <!-- Navbar toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,7 @@
                 <!-- Navbar nav -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " href="./index.html">Touché</a>
+                        <a class="nav-link " href="../index.html">Touché</a>
                     </li>
                     <li class="nav-item">
                         <!--<a class="nav-link " href="./menu.html">Menu</a>-->
@@ -81,14 +81,14 @@
                 </ul>
 
                 <!-- Navbar brand -->
-                <a class="navbar-brand d-none d-lg-flex mx-lg-auto" href="./index.html">
+                <a class="navbar-brand d-none d-lg-flex mx-lg-auto" href="../index.html">
                     Touché Report
                 </a>
 
                 <!-- Navbar nav -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " href="login.html">Login</a>
+                        <a class="nav-link " href="../login/login.html">Login</a>
                     </li>
                     <li class="nav-item">
                         <!--<a class="nav-link " href="./contact-us.html">Contact</a>-->
@@ -100,7 +100,7 @@
     </nav>
 
     <!-- WELCOME -->
-    <header data-jarallax="" data-speed=".8" style="background-image: none; position: relative; z-index: 0;" data-jarallax-original-styles="background-image: url(assets/img/1.jpg);">
+    <header data-jarallax="" data-speed=".8" style="background-image: none; position: relative; z-index: 0;" data-jarallax-original-styles="background-image: url(../assets/img/1.jpg);">
         <div class="d-flex flex-column min-vh-100 bg-black-50 pt-10 pt-md-8 pb-7 pb-md-0">
             <div class="container my-auto">
                 <div class="row justify-content-center main-report " id="main-report">
@@ -109,29 +109,28 @@
                         <form class="bg-white p-4 rounded-3">
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example1">Email address</label>
-                                <input type="email" id="login" class="form-control" />
+                                <label class="form-label" for="full-name">Full Name</label>
+                                <input type="text" id="full-name" class="form-control" />
                             </div>
-
-                            <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example2">Password</label>
-                                <input type="password" id="password" class="form-control" />
+                                <label class="form-label" for="document">Document</label>
+                                <input type="text" id="document" class="form-control" />
                             </div>
+                            <div class="form-outline mb-4 d-none">
 
-                            <div class="row justify-content-between">
-                                <div class="col-4">
-                                    <a href="./signup.html">Sign Up</a>
-                                </div>
-                                <div class="col-4 w-25">
-                                    <input class="form-check-input" type="checkbox" value="" id="remember-me" checked />
-                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
-                                    <a href="/forgot-password.html" class=" w-25">Forgot password?</a>
-                                </div>
+                                <label class="form-label" for="birth-date">Birth Date</label>
+                                <input type="text" class="form-control pickadate" id="birth-date" name="incident-open" placeholder="Birth Date">
+
+                                <!--<input type="datetime" id="birth-date" class="form-control" />
+                                <label class="form-label" for="birth-date">Birth Date</label>-->
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example1">Email address</label>
+                                <input type="email" id="email" class="form-control" />
                             </div>
 
                             <!-- Submit button -->
-                            <button type="button" class="btn btn-primary btn-block signIn pt-2">Sign in</button>
+                            <button type="button" class="btn btn-primary btn-block signup">Sign Up</button>
 
                         </form>
 
@@ -165,21 +164,23 @@
                 </div>
             </div>
         </div>
-        <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100;"><div style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(assets/img/1.jpg); position: fixed; top: 0px; left: 0px; width: 1519.2px; height: 749.68px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0.159985px; transform: translate3d(0px, -0.159985px, 0px);"></div></div>
+        <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100;"><div style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(../assets/img/1.jpg); position: fixed; top: 0px; left: 0px; width: 1519.2px; height: 749.68px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 0.159985px; transform: translate3d(0px, -0.159985px, 0px);"></div></div>
     </header>
 
     <!-- JAVASCRIPT -->
+
     <!-- Vendor JS -->
-    <script src="./assets/js/vendor.bundle.js"></script>
-    <script src="login.js"></script>
+    <script src="./../assets/js/vendor.bundle.js"></script>
+    <script src="./signup.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Theme JS -->
-    <script src="./assets/js/theme.bundle.js"></script>
+    <script src="./../assets/js/theme.bundle.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
