@@ -39,21 +39,22 @@
   
 <h2>:art: Front-End :art:</h2>
 
-:heavy_check_mark: HTML
-:heavy_check_mark: CSS
-:heavy_check_mark: JavaScript
-:heavy_check_mark: Bootstrap
+:heavy_check_mark: <a href="https://www.w3schools.com/html/html_intro.asp">HTML</a>
+:heavy_check_mark: <a href="https://www.w3schools.com/css/css_intro.asp">CSS</a>
+:heavy_check_mark: <a href="https://www.w3schools.com/js/js_intro.asp">JavaScript</a>
+:heavy_check_mark: <a href="https://getbootstrap.com/">Bootstrap</a>
 :heavy_check_mark: <a href="https://sweetalert2.github.io/">SweetAlert2</a>
 
 <h2>⚙ Back-End ⚙</h2>
 
-:heavy_check_mark: C#
-:heavy_check_mark: Ado.Net
+:heavy_check_mark: <a href="https://www.w3schools.com/cs/cs_intro.php">C#</a>
+:heavy_check_mark: <a href=https://learn.microsoft.com/pt-br/dotnet/framework/data/adonet/>Ado.Net</a>
 
 <h2>🛠 Tools 🛠</h2>
 
-:heavy_check_mark: Json
-:heavy_check_mark: Sql Server
+:heavy_check_mark: <a href="https://www.json.org/json-pt.html">Json</a>
+:heavy_check_mark: <a href="https://www.microsoft.com/pt-br/sql-server/sql-server-downloads">Sql Server</a>
+:heavy_check_mark: <a href="https://www.devmedia.com.br/introducao-aos-stored-procedures-no-sql-server/7904">Store Procedures</a>
 :heavy_check_mark: <a href="https://developers.google.com/maps">Google Maps Api</a>
 
   
