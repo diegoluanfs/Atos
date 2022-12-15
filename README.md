@@ -66,43 +66,43 @@
 A página index.html faz com que o usuário acesse o sistema, mas não carregue de imediato as marcações do mapa:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207715173-df001036-6301-4db9-a86f-9a1a41cba5b4.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207715173-df001036-6301-4db9-a86f-9a1a41cba5b4.png" width="600" margin="auto">
 </p>
 
 <p>Por outro lado, ao clicar quando o usuário clica em 'View Map', são carregados os marcadores que estão no banco de dados e ficam visíveis no mapa:</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207715206-dc17d428-480b-4eb9-b9de-5f9866e78f31.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207715206-dc17d428-480b-4eb9-b9de-5f9866e78f31.png" width="600" margin="auto">
 </p>
 
 <p>Quando o usuário clicar em 'Login', no canto superior direito da tela, ele será direcionado para outra página:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207715228-896edced-f9e4-4ad4-8d4c-87df73d383c4.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207715228-896edced-f9e4-4ad4-8d4c-87df73d383c4.png" width="600" margin="auto">
 </p>
 
 <p>Na página de login ainda é possível ir para Sign Up, para realizar o cadastro. Vale ressaltar aqui, que todo o cadastro realizado está programado (nessa versão), para acessar com o login estipulado e a senha padrão ('123').</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207717487-9ddae2cd-7f10-43d0-b9cb-021acac66287.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207717487-9ddae2cd-7f10-43d0-b9cb-021acac66287.png" width="600" margin="auto">
 </p>
 
 <p>Ainda partindo da página de login, é possível ir para a página de esqueci minha senha (forgot password):</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207717843-5a10ea1c-afac-4152-89b1-6aa6de12aa4b.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207717843-5a10ea1c-afac-4152-89b1-6aa6de12aa4b.png" width="600" margin="auto">
 </p>
 
 <p>Depois de realizar login, o usuário será redirecionado para outra página, onde é possível realizar o reporte de ocorrências:</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207718074-2f890799-f517-4ce5-8a09-f9a3b0e52619.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207718074-2f890799-f517-4ce5-8a09-f9a3b0e52619.png" width="600" margin="auto">
 </p>
 
 <p>Após realizar o cadastro de uma ocorrência, a aplicação mostra um pop-up de confirmação, conforme ilustrado abaixo:</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207724370-0624224a-ac4f-47e6-8532-0dc21882a714.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207724370-0624224a-ac4f-47e6-8532-0dc21882a714.png" width="600" margin="auto">
 </p>
 
 <p>Caso o usuário resolva voltar a página index, basta ele clicar em 'Logout', no canto superior direito da tela.</p>
@@ -119,7 +119,7 @@ A página index.html faz com que o usuário acesse o sistema, mas não carregue 
 <p>As funcionalidades foram extraídas do diagrama de caso de uso, que está representado abaixo:</p>
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/45635129/207687654-bef1f8a6-bd7f-4cc0-bc55-8925e95f225a.png" width="400" margin="auto">
+<img src="https://user-images.githubusercontent.com/45635129/207687654-bef1f8a6-bd7f-4cc0-bc55-8925e95f225a.png" width="300" margin="auto">
 </p>
 
 <p>Falando sobre diagramas, para facilitar o entendimento sobre a estrutura das tabelas construídas no Sql Server, foi gerado um diagrama de banco de dados, baseado na estrutura que comporta esse sistema:</p>
